@@ -1,0 +1,13 @@
+{% extends 'mailing/base.html' %}
+{% block content %}
+  <div style="display: flex; flex-direction: column; gap: 10px;">
+    <h1 style="font-size: 24px; margin-bottom: 10px;">Клиент</h1>
+    <div><strong>Ф.И.О. Клиента:</strong> {{ object.client_name }}</div>
+    <div><strong>Электронный адрес:</strong> {{ object.email }}</div>
+    <div><strong>Описание:</strong> {{ object.comment }}</div>
+
+    <div class="col-12">
+      <a href="{% url 'mailing:client_list' %}" class="btn btn-secondary m-2"><< Назад</a>
+    </div>
+  </div>
+{% endblock %}

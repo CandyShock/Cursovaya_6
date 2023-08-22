@@ -1,0 +1,33 @@
+{% extends 'mailing/base.html' %}
+{% block content %}
+<div class="row">
+    {% for object in object_list %}
+        <div class="col-md-4">
+            <div class="card mb-4 box-shadow">
+                <div class="card-body">
+                    <p class="card-text">{{ object.email }}</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                            <a href="{% url 'users:user_detail' object.pk %}"
+                               class="btn btn-sm btn-outline-secondary">Открыть</a>
+                            {% if perms.users.block_user or user.is_superuser %}
+                                {% if object.is_active %}
+                                    <a href="{% url 'users:toggle_account' object.pk %}"
+                                        class="btn btn-sm btn-outline-secondary">Заблокировать</a>
+                                {% else %}
+                                    <a href="{% url 'users:toggle_account' object.pk %}"
+                                        class="btn btn-sm btn-outline-secondary">Активировать</a>
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+<div class="col-12">
+    <a href="{% url 'mailing:setting_list' %}" class="btn btn-secondary m-2"><< Назад</a>
+</div>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'mailing/base.html' %}
+{% load index_tags %}
+{% block content %}
+<div class="row mx-auto text-center">
+    <div class="jumbotron p-3 pb-md-4 mx-auto text-center">
+        <h4 class="my-0 p-3 pb-md-4 fw-normal">БЛОГ</h4>
+        {% for object in object_list %}
+        <div class="shadow-lg p-3 mb-5 bg-body rounded">
+            <div class="card-header py-1">
+                <h4 class="my-0 fw-normal">{{ object.title }}</h4>
+            </div>
+            <div class="card-body">
+                <img class="img-thumbnail"
+                     src="{{ object.picture|upload_media }}"
+                     alt="Thumbnail image">
+                <ul class="list-unstyled mt-3 mb-4">
+                    <li>{{ object.content}}</li>
+                </ul>
+                <h4 class="my-2 fw-normal">{{ object.views }}<small class="my-2 fw-normal"> просмотров</small></h4>
+                <a type="button" class="w-100 btn btn-lg btn-outline-primary mt-2 mb-2"
+                   href="{% url 'blog:blog_detail' object.pk %}">Посмотреть</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endblock %}

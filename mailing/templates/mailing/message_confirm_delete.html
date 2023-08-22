@@ -1,0 +1,12 @@
+{% extends 'mailing/base.html' %}
+{% block content %}
+    <div class="jumbotron p-3 pb-md-4 mx-auto text-center">
+            <form method="post">
+                    {% csrf_token %}
+                    <h4> "Подтвердите удаление {{object.subject_message}}" </h4>
+                    <input type="submit" class="btn btn-success" value="Удалить">
+                    <h1></h1>
+                    <a class="btn btn-danger btn-lg" href="{% url 'mailing:message_list' %}" role="button">Назад</a>
+            </form>
+    </div>
+{% endblock %}

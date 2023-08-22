@@ -1,0 +1,21 @@
+{% extends 'mailing/base.html' %}
+
+
+{% block content %}
+    <form enctype="multipart/form-data" method="post" id="product_form" novalidate>
+        <div class="row flex-wrap">
+            <div class="col-md-6 offset-2">
+                <div class="card">
+
+                    {% csrf_token %}
+                    {{ form.as_p }}
+
+                    <button class="w-100 btn btn-lg btn-primary" type="submit">Save</button>
+
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+{% endblock %}

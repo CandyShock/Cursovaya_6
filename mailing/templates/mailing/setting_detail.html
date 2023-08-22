@@ -1,0 +1,22 @@
+{% extends 'mailing/base.html' %}
+{% block content %}
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-12 text-center ">
+        <div class="card mb-8 rounded-3 shadow-sm">
+          <div class="card-header py-3 text-center">
+            <h4 class="my-0 fw-normal"> Тема сообщения: {{ object.message }}</h4>
+          </div>
+          <div class="card-body text-center">
+            <h1 class="card-title pricing-card-title">Дата и время отправки: {{object.mailing_time}}</h1>
+            <h1 class="card-title pricing-card-title">Периодичность отправки: {{object.frequency_mailing}}</h1>
+            <h1 class="card-title pricing-card-title">Статус отправки: {{object.mailing_status}}</h1>
+              <h1> </h1>
+              <a class="btn btn-success btn-lg" href="{% url 'mailing:setting_list' %}" role="button">Назад</a>
+              <h1></h1>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

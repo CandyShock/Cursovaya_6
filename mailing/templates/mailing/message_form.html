@@ -1,0 +1,21 @@
+{% extends 'mailing/base.html' %}
+{% block content %}
+
+<div class="col-12 text-center">
+    <a class="blog-header-logo text-body-emphasis text-decoration-none" >Создание сообщения</a>
+</div>
+<div class="container mt-4">
+    <div class="card mb-8 rounded-3 shadow-sm">
+        <div class="jumbotron p-5 pb-md-8 mx-auto text-center">
+            <form method="post">
+                <div class="card-body">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="submit" class="btn btn-success" value="{% if object %} Изменить {% else %} Создать {% endif %}" >
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

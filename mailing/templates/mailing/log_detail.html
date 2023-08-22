@@ -1,0 +1,14 @@
+{% extends 'mailing/base.html' %}
+{% block content %}
+  <div style="display: flex; flex-direction: column; gap: 10px;">
+    <h1 style="font-size: 24px; margin-bottom: 10px;">Детализация логов</h1>
+    <div><strong>Сообщение для рассылки:</strong> {{ object.message }}</div>
+    <div><strong>Дата и время попытки:</strong> {{ object.date_attempt }}</div>
+    <div><strong>Статус:</strong> {{ object.attempt_status }}</div>
+    <div><strong>Ответ сервера:</strong> {{ object.server_response }}</div>
+
+    <div class="col-12">
+      <a href="{% url 'mailing:log_list' %}" class="btn btn-secondary m-2"><< Назад</a>
+    </div>
+  </div>
+{% endblock %}

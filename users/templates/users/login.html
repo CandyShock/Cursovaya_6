@@ -1,0 +1,26 @@
+{% extends 'mailing/base.html' %}
+{% block content %}
+<div class="col-12">
+    <div class="container-fluid offset-md-11">
+        <div class="col-12">
+            <div class="card">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <h4 class="col-12"></h4>
+                    <form class="mb-3" novalidate>
+                        <div class="col-12">
+                            <label for="id_date_of_create" class="form-label">Login</label>
+                            {{ form.as_p }}
+                            <div class="invalid-feedback">
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-success mt-2 mb-2">
+                                    Войти
+                                </button>
+                    </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

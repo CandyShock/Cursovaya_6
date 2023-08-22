@@ -1,0 +1,19 @@
+{% extends 'mailing/base.html' %}
+{% load index_tags %}
+{% block content %}
+    <div class="card mb-4 rounded-3 shadow-sm">
+          <div class="card-header py-3">
+            <h4 class="my-0 fw-normal">{{ object.title }}</h4>
+          </div>
+          <div class="card-body">
+            <img class="img-thumbnail"
+                 src="{{ object.picture|upload_media }}"
+                 alt="Thumbnail image">
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>{{object.content}}</li>
+            </ul>
+              <h4 class="my-2 fw-normal">{{ object.views }}<small class="my-2 fw-normal">  просмотров</small></h4>
+              <a class="btn btn-success btn-lg" href="{% url 'mailing:index_list' %}" role="button">На главную</a>
+    </div>
+{% endblock %}
+

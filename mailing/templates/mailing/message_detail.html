@@ -1,0 +1,12 @@
+{% extends 'mailing/base.html' %}
+{% block content %}
+  <div style="display: flex; flex-direction: column; gap: 10px;">
+    <h1 style="font-size: 24px; margin-bottom: 10px;">Сообщение</h1>
+    <div><strong>Тема сообщения:</strong> {{ object.subject_message }}</div>
+    <div><strong>Сообщение:</strong> {{ object.message }}</div>
+
+    <div class="col-12">
+      <a href="{% url 'mailing:message_list' %}" class="btn btn-secondary m-2"><< Назад</a>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,22 @@
+<div class="col-6">
+    <div class="container-fluid">
+        <div class="col-12">
+            <div class="card">
+                <form method="post" enctype="multipart/form-data">
+                    <h4 class="col-6"></h4>
+                    <form class="mb-3" novalidate>
+                        <div class="col-6">
+                            <label for="id_date_of_create" class="form-label">Количество рассылок всего</label>
+                            <p class="card-text">Результат: {% total_mailing_number %}</p>
+                            <div class="invalid-feedback">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <label for="id_date_of_create" class="form-label">Количество активных рассылок</label>
+                            <p class="card-text">Результат: {% active_mailing_number %}</p>
+                        </div>
+                        <div class="col-6 mt-2 mb-2">
+                            <label for="id_content" class="form-label">Количество уникальных клиентов для рассылок</label>
+                            <p class="card-text">Результат: {% unique_customers_number %}</p>
+                        </div>
+                        {% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'mailing/base.html' %}
+{% block content %}
+    {% for object in object_list %}
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-8 text-center ">
+        <div class="card mb-8 rounded-3 shadow-sm">
+          <div class="card-header py-3 text-center">
+            <h4 class="my-0 fw-normal">{{ object.message }}</h4>
+          </div>
+          <div class="card-body text-center">
+            <h1 class="card-title pricing-card-title">{{ object.mailing_time }}</h1>
+                <a class="btn btn-primary btn-lg" href="{% url 'mailing:setting_detail' object.pk %}" role="button">Открыть описание</a>
+                  <h1> </h1>
+                    {% if user.is_staff %}
+                        {% if perms.mailing.change_setting %}
+                            <a class="btn btn-success btn-lg" href="{% url 'mailing:setting_update' object.pk %}" role="button">Изменить</a>
+                        {% endif %}
+                    {% else %}
+                        <a class="btn btn-success btn-lg" href="{% url 'mailing:setting_update' object.pk %}" role="button">Изменить</a>
+                    {% endif %}
+              <h1></h1>
+                <a class="btn btn-danger btn-lg" href="{% url 'mailing:setting_delete' object.pk %}" role="button">Удалить</a>
+              <h1></h1>
+              {% if object.mailing_status == 'created' or object.mailing_status == 'active' %}
+                <a class="btn btn-danger btn-lg" href="{% url 'mailing:setting_status' object.pk %}" role="button">Отключить</a>
+              {% else %}
+                <a class="btn btn-danger btn-lg" href="{% url 'mailing:setting_status' object.pk %}" role="button">Запустить</a>
+              {% endif %}
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+    {% endfor %}
+{% endblock %}
